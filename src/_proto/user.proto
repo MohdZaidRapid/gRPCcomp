@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package users;
+
+message CreateUserDto{
+    string message=1;
+}
+
+message UserDef{
+    string message =1;
+}
+
+
+service UserService{
+    rpc hello(CreateUserDto) returns (CreateUserDto){}
+} 
