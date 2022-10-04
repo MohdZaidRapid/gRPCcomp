@@ -10,7 +10,6 @@ message UserDef{
     string message =1;
 }
 
- 
 
 
 service UserService{

@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package admins;
+
+message AdminDto{
+    string name=1;
+    string age=2;
+}
+ 
+message AdminDef{
+    string message=1;
+    bool status=2;
+}
+ 
+message CreateAdminDto{
+    string message=1;
+}
+
+
+service AdminService{
+    rpc hi(CreateAdminDto) returns (CreateAdminDto){}
+    rpc postStudent(AdminDto) returns(AdminDef){}
+}

@@ -1,0 +1,27 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type AdminDef {
+  """user id"""
+  message: String!
+
+  """status"""
+  status: Boolean
+}
+
+type Query {
+  index: String!
+}
+
+type Mutation {
+  admins(input: AdminDto!): AdminDef!
+}
+
+input AdminDto {
+  """name """
+  name: String
+
+  """age """
+  age: String
+}
