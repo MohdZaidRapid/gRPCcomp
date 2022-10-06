@@ -1,11 +1,15 @@
 import { HttpStatus, Inject, Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { Student } from './interfaces/student.interface';
 import { User } from './interfaces/user.interface';
 
 @Injectable()
 export class AdminService {
-  constructor(@InjectModel('User') private userModel: Model<User>) {}
+  constructor(
+    @InjectModel('User') private userModel: Model<User>,
+    @InjectModel('Student') private studentModel: Model<Student>,
+  ) {}
   async hi(adminDto) {
     console.log(adminDto);
     return {
@@ -26,5 +30,19 @@ export class AdminService {
       console.log(error);
     }
   }
+
+  async addStudent(studentDto) {
+    try {
+      const student = await this.studentModel.create(studentDto);
+      console.log(student);
+      await student.save();
+
+      return {
+        message: 'Student created successfully',
+        status: true,
+      };
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
-// createNewMerchant
