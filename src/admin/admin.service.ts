@@ -25,7 +25,16 @@ export class AdminService implements OnModuleInit {
   }
 
   async postStudent(AdminDto) {
-    const students = await this.adminMicroService.postStudent(AdminDto);
+    const students = await this.adminMicroService
+      .postStudent(AdminDto)
+      .toPromise();
     return students;
+  }
+
+  async addStudent(studentDto) {
+    const stud = await this.adminMicroService
+      .addStudent(studentDto)
+      .toPromise();
+    return stud;
   }
 }

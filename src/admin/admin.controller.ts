@@ -1,6 +1,7 @@
 import { Controller, Get, Post, Body } from '@nestjs/common';
 import { AdminService } from './admin.service';
 import { AdminDto } from './dto/admin.dto';
+import { StudentDto } from './dto/student.dto';
 
 @Controller('admin')
 export class AdminController {
@@ -20,6 +21,16 @@ export class AdminController {
     try {
       const data = this.adminService.postStudent(adminDto);
       console.log(data + '     ');
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  @Post('student')
+  async addStudent(@Body() studentDto: StudentDto): Promise<any> {
+    try {
+      const data = this.adminService.postStudent(studentDto);
       return data;
     } catch (error) {
       console.log(error);

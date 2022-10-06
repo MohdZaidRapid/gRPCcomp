@@ -2,7 +2,8 @@ import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { AdminService } from './admin.service';
 
 import { AdminDto } from './dto/admin.dto';
-import { AdminDef, Admin } from '../admin/typeDef/resolver-type';
+import { AdminDef, Admin, StudentDef } from '../admin/typeDef/resolver-type';
+import { StudentDto } from './dto/student.dto';
 
 @Resolver(() => Admin)
 export class AdminResolver {
@@ -13,6 +14,18 @@ export class AdminResolver {
     console.log('admin');
     try {
       const data = await this.adminService.postStudent(adminDto);
+      console.log(data);
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  @Mutation(() => StudentDef, { name: 'student' })
+  async addStudent(@Args('input') studentDto: StudentDto) {
+    console.log('student');
+    try {
+      const data = await this.adminService.addStudent(studentDto);
       console.log(data);
       return data;
     } catch (error) {

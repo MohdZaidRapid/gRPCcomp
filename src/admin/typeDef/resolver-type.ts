@@ -26,3 +26,13 @@ export class AdminDef {
   @Field({ nullable: true, description: 'status' })
   readonly status: boolean;
 }
+
+@ObjectType()
+export class StudentDef {
+  @Field({ nullable: false, description: 'message' })
+  @IsNotEmpty()
+  readonly message: string;
+
+  @Field({ nullable: true, description: 'status' })
+  readonly status: boolean;
+}

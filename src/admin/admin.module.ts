@@ -9,9 +9,7 @@ import { join } from 'path';
 // import { AdminDto } from './dto/admin.dto';
 
 @Module({
-  imports: [
-    
-  ],
+  imports: [],
   providers: [AdminService, AdminResolver],
   controllers: [AdminController],
   exports: [AdminService, AdminResolver],

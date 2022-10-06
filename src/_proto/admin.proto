@@ -11,7 +11,18 @@ message AdminDef{
     string message=1;
     bool status=2;
 }
- 
+
+message StudentDef{
+    string message=1;
+    bool status=2;
+}
+
+message StudentDto{
+    string name=1;
+    string age=2;
+    string rollNo=3;
+}
+
 message CreateAdminDto{
     string message=1;
 }
@@ -20,4 +31,5 @@ message CreateAdminDto{
 service AdminService{
     rpc hi(CreateAdminDto) returns (CreateAdminDto){}
     rpc postStudent(AdminDto) returns(AdminDef){}
+    rpc addStudent(StudentDto) returns (StudentDef){}
 }

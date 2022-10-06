@@ -10,12 +10,21 @@ type AdminDef {
   status: Boolean
 }
 
+type StudentDef {
+  """message"""
+  message: String!
+
+  """status"""
+  status: Boolean
+}
+
 type Query {
   index: String!
 }
 
 type Mutation {
   admins(input: AdminDto!): AdminDef!
+  student(input: StudentDto!): StudentDef!
 }
 
 input AdminDto {
@@ -24,4 +33,15 @@ input AdminDto {
 
   """age """
   age: String
+}
+
+input StudentDto {
+  """name """
+  name: String
+
+  """age """
+  age: String
+
+  """roll number """
+  rollNo: String
 }
