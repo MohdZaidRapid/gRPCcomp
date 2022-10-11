@@ -1,11 +1,11 @@
-import { Field, ObjectType, Int } from '@nestjs/graphql';
-import { IsNotEmpty, IsString } from 'class-validator';
+import { Field, ObjectType } from '@nestjs/graphql';
+import { IsNotEmpty, IsString, IsArray } from 'class-validator';
 
 @ObjectType()
 export class Admin {
-  // @Field({ nullable: false, description: 'user id' })
-  // @IsString()
-  // readonly _id: string;
+  @Field({ nullable: false, description: 'user id' })
+  @IsString()
+  readonly _id: string;
 
   @Field({ nullable: true, description: 'name' })
   @IsString()
@@ -35,4 +35,11 @@ export class StudentDef {
 
   @Field({ nullable: true, description: 'status' })
   readonly status: boolean;
+}
+
+@ObjectType()
+export class AllStudentDef {
+  @Field((type) => [Admin], { nullable: true })
+  @IsArray()
+  readonly students: Admin[];
 }

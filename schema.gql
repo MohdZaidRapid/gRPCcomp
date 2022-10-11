@@ -2,6 +2,17 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Admin {
+  """user id"""
+  _id: String!
+
+  """name"""
+  name: String
+
+  """age"""
+  age: String
+}
+
 type AdminDef {
   """user id"""
   message: String!
@@ -18,8 +29,18 @@ type StudentDef {
   status: Boolean
 }
 
+type AllStudentDef {
+  students: [Admin!]
+}
+
 type Query {
   index: String!
+  Students(input: GetStudentDto!): AllStudentDef!
+}
+
+input GetStudentDto {
+  """GetAllStudents"""
+  name: String
 }
 
 type Mutation {

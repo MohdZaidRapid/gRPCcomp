@@ -37,4 +37,15 @@ export class AdminService implements OnModuleInit {
       .toPromise();
     return stud;
   }
+
+  async getStudents(getStudentDto) {
+    try {
+      const students = await this.adminMicroService
+        .getStudents(getStudentDto)
+        .toPromise();
+      return students;
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
