@@ -21,4 +21,9 @@ export class AdminController {
   async addStudent(studentDto) {
     return await this.adminService.addStudent(studentDto);
   }
+
+  @GrpcMethod('AdminService', 'getStudents')
+  async getStudents(getStudentDto) {
+    return await this.adminService.getStudents(getStudentDto);
+  }
 }

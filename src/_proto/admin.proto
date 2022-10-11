@@ -23,13 +23,26 @@ message StudentDto{
     string rollNo=3;
 }
 
+message AdminResponse{
+    string _id=1;
+    string age=2;
+    string name=3;
+}
+
+message AllStudentDef{
+   repeated AdminResponse students=1;
+}
+
 message CreateAdminDto{
     string message=1;
 }
+message GetStudentDto{
 
+}
 
 service AdminService{
     rpc hi(CreateAdminDto) returns (CreateAdminDto){}
     rpc postStudent(AdminDto) returns(AdminDef){}
     rpc addStudent(StudentDto) returns (StudentDef){}
+    rpc getStudents(GetStudentDto) returns (AllStudentDef){}
 }

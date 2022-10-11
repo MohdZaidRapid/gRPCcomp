@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Student } from './interfaces/student.interface';
 import { User } from './interfaces/user.interface';
+import { StudentSchema } from './schemas/student.schema';
 
 @Injectable()
 export class AdminService {
@@ -40,6 +41,18 @@ export class AdminService {
       return {
         message: 'Student created successfully',
         status: true,
+      };
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async getStudents(studentDto) {
+    try {
+      const students = await this.studentModel.find();
+      console.log(students);
+      return {
+        students: students,
       };
     } catch (error) {
       console.log(error);
