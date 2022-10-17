@@ -34,7 +34,8 @@ export class AdminService {
 
   async addStudent(studentDto) {
     try {
-      const student = await this.studentModel.create(studentDto);
+      const userId = '633c24edb241be98c574d90c';
+      const student = await this.studentModel.create({ userId, ...studentDto });
       console.log(student);
       await student.save();
 
@@ -49,7 +50,10 @@ export class AdminService {
 
   async getStudents(studentDto) {
     try {
-      const students = await this.studentModel.find();
+      const students = await this.studentModel
+        .find()
+        .populate('userId', 'name age');
+
       console.log(students);
       return {
         students: students,

@@ -8,5 +8,7 @@ export const StudentSchema = new mongoose.Schema<Student>({
   age: {
     type: String,
   },
-  rollNo: String,
+  rollNo: { type: String },
+
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
 });
