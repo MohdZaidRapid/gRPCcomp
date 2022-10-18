@@ -14,4 +14,8 @@ export class StudentDto {
   @Field({ nullable: true, description: 'roll number ' })
   @IsString()
   readonly rollNo: string;
+
+  @Field({ nullable: false, description: 'userID' })
+  @IsString()
+  readonly userId: string;
 }

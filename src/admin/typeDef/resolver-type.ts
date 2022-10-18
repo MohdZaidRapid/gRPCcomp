@@ -2,6 +2,14 @@ import { Field, ObjectType } from '@nestjs/graphql';
 import { IsNotEmpty, IsString, IsArray } from 'class-validator';
 
 @ObjectType()
+export class stuDef {
+  @Field({ nullable: true, description: 'user name' })
+  readonly name: string;
+  @Field({ nullable: false, description: 'user age' })
+  readonly age: string;
+}
+
+@ObjectType()
 export class Admin {
   @Field({ nullable: false, description: 'user id' })
   @IsString()
@@ -14,6 +22,10 @@ export class Admin {
   @Field({ nullable: true, description: 'age' })
   @IsString()
   readonly age: string;
+
+  @Field(() => stuDef, { nullable: true, description: 'user details' })
+  @IsString()
+  readonly userId: stuDef;
 }
 
 @ObjectType()
@@ -30,7 +42,6 @@ export class AdminDef {
 @ObjectType()
 export class StudentDef {
   @Field({ nullable: false, description: 'message' })
-  @IsNotEmpty()
   readonly message: string;
 
   @Field({ nullable: true, description: 'status' })

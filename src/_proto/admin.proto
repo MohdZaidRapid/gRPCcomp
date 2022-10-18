@@ -21,12 +21,20 @@ message StudentDto{
     string name=1;
     string age=2;
     string rollNo=3;
+    string userId=4;
+   
+}
+
+message stuDef {
+    string name=1;
+    string age=2;
 }
 
 message AdminResponse{
     string _id=1;
     string age=2;
     string name=3;
+    stuDef userId =4;
 }
 
 message AllStudentDef{
@@ -40,9 +48,12 @@ message GetStudentDto{
 
 }
 
+
+
 service AdminService{
     rpc hi(CreateAdminDto) returns (CreateAdminDto){}
     rpc postStudent(AdminDto) returns(AdminDef){}
     rpc addStudent(StudentDto) returns (StudentDef){}
     rpc getStudents(GetStudentDto) returns (AllStudentDef){}
+    
 }
